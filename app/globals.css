@@ -24,3 +24,9 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.ds-page {
+  background-image: url('/demon-slayer-bg.jpg');
+  background-size: cover;
+  background-position: center top;
+}
