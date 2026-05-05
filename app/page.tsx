@@ -18,7 +18,7 @@ const links = [
     icon: (<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2C6 8 4 12 4 15a8 8 0 0 0 16 0c0-3-2-7-8-13z"/></svg>),
   },
   {
-    title: 'TikTok — Valoran Live Streaming 🔴',
+    title: 'TikTok — Y2L | Yali Valorant Live Streaming 🔴',
     url: 'https://tiktok.com/@y2lnatan',
     kanji: '風', subtitle: 'Wind Breathing', form: 'Ninth Form · Idaten Typhoon',
     color: { bg: 'rgba(60,200,140,0.12)', border: 'rgba(60,200,140,0.45)', accent: '#3ec88a', glow: 'rgba(60,200,140,0.25)', soft: 'rgba(62,200,138,0.07)' },
