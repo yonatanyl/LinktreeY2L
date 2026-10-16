@@ -5,9 +5,9 @@ import { useEffect, useState } from 'react';
 // ============================================================
 // 🖼️  OPTIONAL: taruh gambar background sendiri di /public lalu isi path-nya
 // (kosongkan '' = pakai background murni CSS/SVG, tanpa aset eksternal)
-const BG_IMAGE = '';                       // contoh: '/sao-bc-bg.jpg'
-const CHAR_IMAGE = '/side-character.png';  // optional side artwork
-const USE_CHAR = false;                    // true jika kamu punya PNG-nya
+const BG_IMAGE = '/sao-bc-bg.jpg';
+const CHAR_IMAGE = '/side-character.png';
+const USE_CHAR = true;
 // ============================================================
 
 type Faction = 'sao' | 'bc';
@@ -196,7 +196,9 @@ export default function Home() {
             radial-gradient(ellipse 45% 30% at 100% 100%, rgba(242,193,78,0.16) 0%, transparent 70%),
             radial-gradient(ellipse 45% 30% at 0% 95%, rgba(230,57,70,0.14) 0%, transparent 70%),
             radial-gradient(ellipse 30% 25% at 85% 40%, rgba(62,224,143,0.07) 0%, transparent 70%),
-            linear-gradient(180deg, #0b1d3a 0%, #08101f 40%, #05070f 75%, #04050a 100%);
+            ${BG_IMAGE
+              ? `linear-gradient(180deg, rgba(11,29,58,0.40) 0%, rgba(8,16,31,0.65) 35%, rgba(5,7,15,0.88) 70%, rgba(4,5,10,0.96) 100%);`
+              : `linear-gradient(180deg, #0b1d3a 0%, #08101f 40%, #05070f 75%, #04050a 100%);`}
         }
         .sb-vignette {
           position: absolute; inset: 0; z-index: 0; pointer-events: none;
@@ -221,11 +223,16 @@ export default function Home() {
         }
 
         .sb-char {
-          position: absolute; right: -10px; bottom: 0; height: 80%; max-width: 42%;
+          position: absolute; right: -20px; bottom: 0; height: 82%; max-width: 48%;
           object-fit: contain; object-position: bottom right; z-index: 1; pointer-events: none;
-          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 65%, transparent 100%);
-          mask-image: linear-gradient(to bottom, transparent 0%, black 25%, black 65%, transparent 100%);
-          opacity: 0.5;
+          -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%),
+                              linear-gradient(to right, transparent 0%, black 25%);
+          mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 80%, transparent 100%),
+                      linear-gradient(to right, transparent 0%, black 25%);
+          mask-composite: intersect;
+          -webkit-mask-composite: source-in;
+          opacity: 0.45;
+          filter: drop-shadow(0 0 16px rgba(79,216,255,0.3));
         }
 
         .sb-content { position: relative; z-index: 4; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 500px; }
