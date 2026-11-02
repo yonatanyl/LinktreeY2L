@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   title: "Y2L | Yali | Natan - Streamer Valorant & Data Analyst",
   description: "Profil resmi Y2L (Natan / Yali / Nat / Tan). Ex-Immo 2 Valorant Streamer Indonesia, Tech Content Creator, dan Profesional Data Analyst. Join Havefun Party sekarang!",
   keywords: [
-    "Y2L", "Natan", "Yali", "Nat", "Tan", "Yonatan Yusak Lestari", 
+    "Y2L", "Natan", "Yali", "Nat", "Tan", "Streamer Valorant", 
     "Streamer Valorant", "Valorant Indonesia", "Ex-Immo 2", "Valorant Gameplay", 
     "Data Analyst", "Data Practitioner", "Tech Creator", "Mabar Valorant"
   ],
-  authors: [{ name: "Yonatan Yusak Lestari" }],
+  authors: [{ name: "Natan" }],
   openGraph: {
     title: "Y2L | Yali | Natan - Streamer Valorant & Data Analyst",
     description: "Ex-Immo 2 Valorant Streamer Indonesia & Profesional Data Analyst.",

@@ -655,7 +655,7 @@ export default function Home() {
       <div className="sb-root" ref={rootRef} onMouseMove={handleMouseMove}>
         {/* SEO Hidden text */}
         <div className="sr-only">
-          <h1>Profil Resmi Y2L (Yonatan Yusak Lestari)</h1>
+          <h1>Profil Resmi Y2L (Natan)</h1>
           <p>Streamer Valorant Indonesia (Ex-Immo 2), Data Analyst, dan Tech Creator. Join Havefun Party Discord!</p>
         </div>
 
