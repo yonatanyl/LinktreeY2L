@@ -152,7 +152,7 @@ const links: {
   },
   {
     title: 'YouTube — Y2L | Yali Valorant Live Streaming 🔴',
-    url: 'https://youtube.com/@y2lnatan',
+    url: 'https://www.youtube.com/@y2lyali',
     faction: 'bc',
     badge: 'CRIMSON FIRE MAGIC',
     skill: 'Spell · Crimson Lion Blaze // Highlight VODs',
