@@ -447,6 +447,11 @@ export default function Home() {
           letter-spacing: 3px; text-align: center; margin-bottom: 2px; line-height: 1.1;
           text-shadow: 0 0 20px rgba(79,216,255,0.7), 0 2px 4px rgba(0,0,0,0.9);
         }
+        .t-name {
+          font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 11px;
+          color: rgba(242,193,78,0.9); letter-spacing: 2px; margin-bottom: 2px; text-align: center;
+          line-height: 1.1;
+        }
         .t-sub {
           font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 11.5px;
           color: #c9e6ff; letter-spacing: 1.8px; margin-bottom: 6px; text-align: center;
@@ -637,6 +642,9 @@ export default function Home() {
         .ft-rule { width: 90px; height: 1px; background: linear-gradient(90deg, transparent, rgba(242,193,78,0.5), transparent); }
         .ft-quote { font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 10.5px; color: rgba(242,193,78,0.75); letter-spacing: 1.5px; text-transform: uppercase; line-height: 1; }
         .ft-text { font-family: 'Orbitron', sans-serif; font-size: 7.5px; color: rgba(160,210,235,0.4); letter-spacing: 3px; text-transform: uppercase; line-height: 1; }
+        .ft-meta { font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 600; color: rgba(180,220,245,0.65); letter-spacing: 0.8px; line-height: 1.2; text-align: center; margin-top: 2px; }
+        .ft-link { color: rgba(79,216,255,0.85); text-decoration: none; border-bottom: 1px dotted rgba(79,216,255,0.45); transition: color 0.2s, border-color 0.2s; }
+        .ft-link:hover { color: #f2c14e; border-bottom-color: #f2c14e; }
 
         /* Floating Toast */
         .toast {
@@ -808,6 +816,7 @@ export default function Home() {
           {/* ── TITLE & TAGS ── */}
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.45 }} style={{ textAlign: 'center' }}>
             <h1 className="t-main">Y2L | YALI | NATAN</h1>
+            <p className="t-name">Yonatan Yusak Lestari</p>
             <p className="t-sub">Ex-Immortal II · Valorant &amp; Tech Creator</p>
 
             <div className="tag-row">
@@ -868,7 +877,7 @@ export default function Home() {
                 key={link.url}
                 href={link.url}
                 target="_blank"
-                rel="noopener noreferrer"
+                rel={link.url.includes('discord.gg') ? 'noopener noreferrer' : 'me noopener noreferrer'}
                 className="lc-card"
                 style={{
                   '--accent': link.color.accent,
@@ -930,6 +939,18 @@ export default function Home() {
             <div className="ft-rule" />
             <p className="ft-quote">Never give up · Surpass your limits</p>
             <p className="ft-text">Aincrad × Clover Kingdom // All Platforms</p>
+            <p className="ft-meta">
+              <span>© 2026 Yonatan Yusak Lestari</span>
+              <span aria-hidden="true"> · </span>
+              <a
+                href="https://yonatanyl.github.io/LinktreeY2L/"
+                target="_blank"
+                rel="me noopener noreferrer"
+                className="ft-link"
+              >
+                Profil lengkap
+              </a>
+            </p>
           </motion.div>
         </div>
 
