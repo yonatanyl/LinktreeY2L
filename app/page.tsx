@@ -877,7 +877,11 @@ export default function Home() {
                 key={link.url}
                 href={link.url}
                 target="_blank"
-                rel={link.url.includes('discord.gg') ? 'noopener noreferrer' : 'me noopener noreferrer'}
+                rel={
+                  link.url.includes('discord.gg') || link.url.includes('sociabuzz.com')
+                    ? 'noopener noreferrer'
+                    : 'me noopener noreferrer'
+                }
                 className="lc-card"
                 style={{
                   '--accent': link.color.accent,

@@ -26,7 +26,7 @@ const personJsonLd = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://y2lnatan.site/"),
   title: "Y2L | Yali | Natan - Streamer Valorant & Data Analyst",
-  description: "Profil resmi Y2L (Natan / Yali / Nat / Tan). Ex-Immo 2 Valorant Streamer Indonesia, Tech Content Creator, dan Profesional Data Analyst. Join Havefun Party sekarang!",
+  description: "Profil resmi Y2L (Yonatan Yusak Lestari / Natan / Yali). Ex-Immo 2 Valorant Streamer Indonesia, Tech Content Creator & Data Analyst. Join Havefun Party!",
   keywords: [
     "Y2L", "Natan", "Yali", "Nat", "Tan", "Streamer Valorant", 
     "Streamer Valorant", "Valorant Indonesia", "Ex-Immo 2", "Valorant Gameplay", 
