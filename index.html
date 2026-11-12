@@ -68,15 +68,16 @@
       --bg-card: #f8f9fa;
       --bg-card-hover: #f0f1f3;
       --text: #1a1a2e;
-      --text-secondary: #555;
-      --text-muted: #888;
-      --border: #e0e0e0;
-      --accent: #e8472a;
-      --accent-soft: rgba(232, 71, 42, 0.08);
-      --accent-hover: #d63a1f;
-      --pro-accent: #2563eb;
-      --pro-accent-soft: rgba(37, 99, 235, 0.08);
-      --pro-accent-hover: #1d4ed8;
+      --text-secondary: #4a4a5e;
+      --text-muted: #595959;
+      --border: #dcdce2;
+      --accent: #c93318;
+      --accent-soft: rgba(201, 51, 24, 0.08);
+      --accent-hover: #b22a12;
+      --pro-accent: #1d4ed8;
+      --pro-accent-soft: rgba(29, 78, 216, 0.08);
+      --pro-accent-hover: #1e40af;
+      --btn-hover-text: #ffffff;
       --shadow: 0 1px 3px rgba(0,0,0,0.06);
       --shadow-lg: 0 4px 16px rgba(0,0,0,0.08);
       --radius: 12px;
@@ -89,15 +90,16 @@
         --bg-card: #1a1a28;
         --bg-card-hover: #222236;
         --text: #e8e6f0;
-        --text-secondary: #b0aec0;
-        --text-muted: #777790;
+        --text-secondary: #b8b6c8;
+        --text-muted: #9898b0;
         --border: #2a2a3e;
-        --accent: #f05a3e;
-        --accent-soft: rgba(240, 90, 62, 0.1);
-        --accent-hover: #ff6e52;
+        --accent: #ff6b50;
+        --accent-soft: rgba(255, 107, 80, 0.12);
+        --accent-hover: #ff826b;
         --pro-accent: #60a5fa;
-        --pro-accent-soft: rgba(96, 165, 250, 0.1);
+        --pro-accent-soft: rgba(96, 165, 250, 0.12);
         --pro-accent-hover: #93c5fd;
+        --btn-hover-text: #0f0f17;
         --shadow: 0 1px 3px rgba(0,0,0,0.2);
         --shadow-lg: 0 4px 16px rgba(0,0,0,0.3);
       }
@@ -236,7 +238,7 @@
     }
     .btn--yt:hover {
       background: var(--accent);
-      color: #fff;
+      color: var(--btn-hover-text);
       box-shadow: 0 2px 12px rgba(232, 71, 42, 0.25);
     }
 
@@ -267,7 +269,7 @@
     }
     .btn--li:hover {
       background: var(--pro-accent);
-      color: #fff;
+      color: var(--btn-hover-text);
       box-shadow: 0 2px 12px rgba(37, 99, 235, 0.25);
     }
 
@@ -299,8 +301,8 @@
     }
 
     .clip-card {
-      display: block;
-      position: relative;
+      display: flex;
+      flex-direction: column;
       border-radius: var(--radius);
       overflow: hidden;
       background: var(--bg-card);
@@ -314,12 +316,19 @@
       box-shadow: var(--shadow-lg);
     }
 
+    .clip-thumb-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: var(--bg-card-hover);
+    }
+
     .clip-thumb {
       width: 100%;
-      aspect-ratio: 16/9;
+      height: auto;
+      aspect-ratio: 3/4;
       object-fit: cover;
       display: block;
-      background: var(--bg-card-hover);
     }
 
     .clip-play {
@@ -327,26 +336,35 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 40px;
-      height: 40px;
-      background: rgba(0,0,0,0.6);
+      width: 44px;
+      height: 44px;
+      background: rgba(0,0,0,0.68);
+      border: 1.5px solid rgba(255,255,255,0.28);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      opacity: 0.85;
-      transition: opacity 0.2s;
+      opacity: 0.9;
+      transition: opacity 0.2s, transform 0.2s;
     }
 
-    .clip-card:hover .clip-play { opacity: 1; }
+    .clip-card:hover .clip-play {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.06);
+    }
 
     .clip-play svg { width: 16px; height: 16px; fill: #fff; margin-left: 2px; }
 
     .clip-title {
-      padding: 8px 10px;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      line-height: 1.3;
+      padding: 10px 12px;
+      font-size: 0.825rem;
+      font-weight: 500;
+      color: var(--text);
+      line-height: 1.35;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     /* ── Bullet List ── */
@@ -409,7 +427,7 @@
   <header class="header">
     <div class="container">
       <div class="avatar-wrap">
-        <img src="assets/foto.jpg" alt="Foto Yonatan Yusak Lestari (Y2L)" class="avatar" width="120" height="120" loading="eager">
+        <img src="assets/foto.jpg" alt="Foto Yonatan Yusak Lestari (Y2L)" class="avatar" width="120" height="120" loading="eager" fetchpriority="high">
       </div>
       <h1>Yonatan Yusak Lestari</h1>
       <p class="tagline">Data Analyst · Content Creator Y2L</p>
@@ -419,62 +437,66 @@
   <main class="container">
 
     <!-- ── SECTION: Y2L ── -->
-    <section class="section" id="y2l">
-      <div class="section-label section-label--creator">
-        <span class="dot"></span> Y2L — Kreator
-      </div>
+    <section class="section" id="y2l" aria-labelledby="heading-y2l">
+      <h2 class="section-label section-label--creator" id="heading-y2l">
+        <span class="dot" aria-hidden="true"></span> Y2L — Kreator
+      </h2>
       <p>
         <strong>Yonatan Yusak Lestari</strong>, atau lebih dikenal sebagai <strong>Y2L</strong>, adalah
         streamer Valorant Indonesia. Konten utama: live mabar dan ranked, video funny moments, serta
-        voice-chat comedy di YouTube dan TikTok. Jadwal live:
-        <!-- TODO: isi jadwal live -->
-        <em>[jadwal live belum ditentukan]</em>.
+        voice-chat comedy di YouTube dan TikTok. Jadwal live: <strong>after workhour</strong>.
       </p>
 
       <div class="btn-row">
-        <a href="https://youtube.com/@y2lnatan" target="_blank" rel="me noopener noreferrer" class="btn btn--yt" aria-label="YouTube Y2L">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.9 31.9 0 0 0 0 12a31.9 31.9 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.9 31.9 0 0 0 24 12a31.9 31.9 0 0 0-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+        <a href="https://youtube.com/@y2lnatan" target="_blank" rel="me noopener noreferrer" class="btn btn--yt">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.9 31.9 0 0 0 0 12a31.9 31.9 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.9 31.9 0 0 0 24 12a31.9 31.9 0 0 0-.5-5.8zM9.5 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
           YouTube
         </a>
-        <a href="https://tiktok.com/@y2lnatan" target="_blank" rel="me noopener noreferrer" class="btn btn--tt" aria-label="TikTok Y2L">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.3 5.3A4.5 4.5 0 0 1 16.5 4V0h-3.8v16.5a2.8 2.8 0 1 1-1.9-2.6V10a6.6 6.6 0 1 0 5.7 6.5V9a8.2 8.2 0 0 0 4.8 1.5V6.8a4.5 4.5 0 0 1-2-.5z"/></svg>
+        <a href="https://tiktok.com/@y2lnatan" target="_blank" rel="me noopener noreferrer" class="btn btn--tt">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.3 5.3A4.5 4.5 0 0 1 16.5 4V0h-3.8v16.5a2.8 2.8 0 1 1-1.9-2.6V10a6.6 6.6 0 1 0 5.7 6.5V9a8.2 8.2 0 0 0 4.8 1.5V6.8a4.5 4.5 0 0 1-2-.5z"/></svg>
           TikTok
         </a>
-        <a href="https://instagram.com/yonatanyl" target="_blank" rel="me noopener noreferrer" class="btn btn--ig" aria-label="Instagram Y2L">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+        <a href="https://instagram.com/yonatanyl" target="_blank" rel="me noopener noreferrer" class="btn btn--ig">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
           Instagram
         </a>
       </div>
 
       <!-- Klip Terbaik -->
-      <p class="clips-heading">Klip Terbaik</p>
+      <h3 class="clips-heading">Klip Terbaik</h3>
       <div class="clips-grid">
-        <!-- KLIP 1 — TODO: ganti href dan thumbnail -->
-        <a href="#klip1" class="clip-card" aria-label="Klip 1">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'%3E%3Crect fill='%23222' width='320' height='180'/%3E%3Ctext x='160' y='95' text-anchor='middle' fill='%23555' font-size='14' font-family='sans-serif'%3EKlip 1%3C/text%3E%3C/svg%3E" alt="Klip 1 — placeholder" class="clip-thumb" width="320" height="180" loading="lazy">
-          <div class="clip-play"><svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21"/></svg></div>
-          <div class="clip-title">[Judul klip 1]</div>
+        <!-- KLIP 1 -->
+        <a href="https://www.tiktok.com/@y2lnatan/video/7633418657183304968" target="_blank" rel="noopener noreferrer" class="clip-card">
+          <div class="clip-thumb-wrap">
+            <img src="assets/clip1.jpg" alt="Thumbnail klip TikTok Y2L: Info game lain dong, kegampangan ini" class="clip-thumb" width="450" height="600" loading="lazy">
+            <div class="clip-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21"/></svg></div>
+          </div>
+          <div class="clip-title">Info game lain dong, kegampangan ini</div>
         </a>
-        <!-- KLIP 2 — TODO: ganti href dan thumbnail -->
-        <a href="#klip2" class="clip-card" aria-label="Klip 2">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'%3E%3Crect fill='%23222' width='320' height='180'/%3E%3Ctext x='160' y='95' text-anchor='middle' fill='%23555' font-size='14' font-family='sans-serif'%3EKlip 2%3C/text%3E%3C/svg%3E" alt="Klip 2 — placeholder" class="clip-thumb" width="320" height="180" loading="lazy">
-          <div class="clip-play"><svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21"/></svg></div>
-          <div class="clip-title">[Judul klip 2]</div>
+        <!-- KLIP 2 -->
+        <a href="https://www.tiktok.com/@y2lnatan/video/7703529054753819956" target="_blank" rel="noopener noreferrer" class="clip-card">
+          <div class="clip-thumb-wrap">
+            <img src="assets/clip2.jpg" alt="Thumbnail klip TikTok Y2L: SUMPAH VALID TIPS ECO ROUND AUTO MENANG GARA-GARA INI?!" class="clip-thumb" width="450" height="600" loading="lazy">
+            <div class="clip-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21"/></svg></div>
+          </div>
+          <div class="clip-title">SUMPAH VALID TIPS ECO ROUND AUTO MENANG GARA-GARA INI?! 😂</div>
         </a>
-        <!-- KLIP 3 — TODO: ganti href dan thumbnail -->
-        <a href="#klip3" class="clip-card" aria-label="Klip 3">
-          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'%3E%3Crect fill='%23222' width='320' height='180'/%3E%3Ctext x='160' y='95' text-anchor='middle' fill='%23555' font-size='14' font-family='sans-serif'%3EKlip 3%3C/text%3E%3C/svg%3E" alt="Klip 3 — placeholder" class="clip-thumb" width="320" height="180" loading="lazy">
-          <div class="clip-play"><svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21"/></svg></div>
-          <div class="clip-title">[Judul klip 3]</div>
+        <!-- KLIP 3 -->
+        <a href="https://www.tiktok.com/@y2lnatan/video/7624838809515085077" target="_blank" rel="noopener noreferrer" class="clip-card">
+          <div class="clip-thumb-wrap">
+            <img src="assets/clip3.jpg" alt="Thumbnail klip TikTok Y2L: Aku dan Party Haha-Hihi kuuu" class="clip-thumb" width="450" height="600" loading="lazy">
+            <div class="clip-play" aria-hidden="true"><svg viewBox="0 0 24 24"><polygon points="6 3 20 12 6 21"/></svg></div>
+          </div>
+          <div class="clip-title">Aku dan Party Haha-Hihi kuuu</div>
         </a>
       </div>
     </section>
 
     <!-- ── SECTION: PROFESIONAL ── -->
-    <section class="section" id="profesional">
-      <div class="section-label section-label--pro">
-        <span class="dot"></span> Profesional
-      </div>
+    <section class="section" id="profesional" aria-labelledby="heading-pro">
+      <h2 class="section-label section-label--pro" id="heading-pro">
+        <span class="dot" aria-hidden="true"></span> Profesional
+      </h2>
       <p>
         Di luar dunia gaming, Yonatan Yusak Lestari bekerja sebagai Data Analyst yang fokus pada
         SQL, Python, dan arsitektur data. Berikut ringkasan profesional:
@@ -482,16 +504,15 @@
       <ul class="pro-list">
         <li>Data Analyst di <strong>Kementerian Koperasi</strong>, mengolah data strategis untuk pengambilan keputusan.</li>
         <li><strong>CompTIA Data+ Certified</strong> — lulusan Teknik Informatika, Universitas Singaperbangsa Karawang (UNSIKA).</li>
-        <li>Publikasi jurnal 2026 tentang <strong>OLAP-on-OLTP dengan log-based CDC</strong><!-- TODO: tambahkan link DOI/jurnal jika sudah terbit -->.</li>
       </ul>
 
       <div class="btn-row">
-        <a href="https://www.linkedin.com/in/yonatanyl/" target="_blank" rel="me noopener noreferrer" class="btn btn--li" aria-label="LinkedIn Yonatan">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.2A1.8 1.8 0 1 1 8.3 6.5 1.8 1.8 0 0 1 6.5 8.3zM20 19h-3v-4.4c0-1.1 0-2.4-1.5-2.4S14 13.5 14 14.6V19h-3v-9h2.9v1.2h0a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.7 2 3.7 4.7z"/></svg>
+        <a href="https://www.linkedin.com/in/yonatanyl/" target="_blank" rel="me noopener noreferrer" class="btn btn--li">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5v-9h3zM6.5 8.2A1.8 1.8 0 1 1 8.3 6.5 1.8 1.8 0 0 1 6.5 8.3zM20 19h-3v-4.4c0-1.1 0-2.4-1.5-2.4S14 13.5 14 14.6V19h-3v-9h2.9v1.2h0a3.2 3.2 0 0 1 2.9-1.6c3.1 0 3.7 2 3.7 4.7z"/></svg>
           LinkedIn
         </a>
-        <a href="https://github.com/yonatanyl" target="_blank" rel="me noopener noreferrer" class="btn btn--gh" aria-label="GitHub Yonatan">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6a3.2 3.2 0 0 0-1.3-1.7c-1.1-.7.1-.7.1-.7a2.5 2.5 0 0 1 1.8 1.2 2.5 2.5 0 0 0 3.4 1 2.5 2.5 0 0 1 .7-1.6c-2.6-.3-5.4-1.3-5.4-5.9a4.6 4.6 0 0 1 1.2-3.2 4.3 4.3 0 0 1 .1-3.2s1-.3 3.4 1.2a11.5 11.5 0 0 1 6.1 0c2.3-1.5 3.3-1.2 3.3-1.2a4.3 4.3 0 0 1 .1 3.2 4.6 4.6 0 0 1 1.2 3.2c0 4.6-2.8 5.6-5.5 5.9a2.8 2.8 0 0 1 .8 2.2v3.2c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
+        <a href="https://github.com/yonatanyl" target="_blank" rel="me noopener noreferrer" class="btn btn--gh">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6a3.2 3.2 0 0 0-1.3-1.7c-1.1-.7.1-.7.1-.7a2.5 2.5 0 0 1 1.8 1.2 2.5 2.5 0 0 0 3.4 1 2.5 2.5 0 0 1 .7-1.6c-2.6-.3-5.4-1.3-5.4-5.9a4.6 4.6 0 0 1 1.2-3.2 4.3 4.3 0 0 1 .1-3.2s1-.3 3.4 1.2a11.5 11.5 0 0 1 6.1 0c2.3-1.5 3.3-1.2 3.3-1.2a4.3 4.3 0 0 1 .1 3.2 4.6 4.6 0 0 1 1.2 3.2c0 4.6-2.8 5.6-5.5 5.9a2.8 2.8 0 0 1 .8 2.2v3.2c0 .3.2.7.8.6A12 12 0 0 0 12 .3z"/></svg>
           GitHub
         </a>
       </div>
@@ -502,11 +523,11 @@
   <!-- ── FOOTER ── -->
   <footer class="footer">
     <div class="container">
-      <!-- TODO: ganti dengan alamat email yang benar -->
-      <p>Kerja sama: <a href="mailto:placeholder@example.com">placeholder@example.com</a></p>
+      <p>Kerja sama: <a href="mailto:jonatan.jn61@gmail.com">jonatan.jn61@gmail.com</a></p>
       <p>&copy; 2026 Yonatan Yusak Lestari</p>
     </div>
   </footer>
 
 </body>
 </html>
+

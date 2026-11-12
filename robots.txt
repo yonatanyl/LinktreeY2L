@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://yonatanyl.github.io/LinktreeY2L/sitemap.xml
+
